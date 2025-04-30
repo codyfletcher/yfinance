@@ -82,7 +82,7 @@ class YfData(metaclass=SingletonMeta):
         self._cookie_lock = threading.Lock()
 
         self._session, self._proxy = None, None
-        self._set_session(session or requests.Session())
+        self._set_session(session or requests.Session(impersonate="chrome"))
         self._set_proxy(proxy)
 
         utils.get_yf_logger().debug(f"Using User-Agent: {self.user_agent_headers['User-Agent']}")
